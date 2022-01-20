@@ -180,7 +180,7 @@ function main() {
                 }
 
                 console.log(` Final Node Count: ${finalNodeCount}`);
-                consoleOutput += ` Final Node Count: ${finalNodeCount}\n`;
+                consoleOutput += ` Final Node Count: ${finalNodeCount+1}\n`;
 
                 if (trueTime > 0) {
                     console.log(` Day ${trueTime}`);

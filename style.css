@@ -19,7 +19,7 @@
 
 #calculator{
     height: 70%;
-    width: 35%;
+    width: 40%;
     text-align: center;
     margin: auto;
 
@@ -61,6 +61,11 @@
     width: 40%;
 }
 
+#buttons {
+    width: 100%;
+    margin: 2%;
+}
+
 #button-submit{
     transition-duration: 0.5s;
     font-weight: bold;
@@ -74,6 +79,24 @@
 
 #button-submit:hover{
     background-color: rgb(0, 255, 0); 
+    color: rgb(15, 15, 15);
+    border-radius: 50px;
+    border-color: black; 
+}
+
+#button-clear{
+    transition-duration: 0.5s;
+    font-weight: bold;
+    padding: 0.5%;
+    border: 1px solid;
+    width: 7.5%;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+}
+
+#button-clear:hover{
+    background-color: rgb(255, 0, 0); 
     color: rgb(15, 15, 15);
     border-radius: 50px;
     border-color: black; 

@@ -212,7 +212,7 @@ function main() {
     }
 
     
-    if (timeCap === "" && finalUnitSum !== "" && reinvestRatio === "") {
+    if (timeCap == "" && finalUnitSum !== "" && reinvestRatio == "" && dailyUnits != 0) {
         // document.getElementById("console-output").innerText = 'Please Wait...\n \n';
         boxCreate();
         simple();
@@ -238,10 +238,24 @@ function main() {
 
     console.log("Button Working");
 
-    
-    
 
     // Reset calulator to empty variables
+    // document.getElementById("daily-units").value = "";
+    // document.getElementById("node-price").value = "";
+    // document.getElementById("initial-node-count").value = "";
+    // document.getElementById("final-unit-sum").value = "";
+    // document.getElementById("time-cap").value = "";
+    // document.getElementById("node-cap").value = "";
+    // document.getElementById("daily-units-final").value = "";
+    // document.getElementById("reinvest-ratio").value = "";
+
+}
+
+let clearCalc = () => {
+
+    document.getElementById("console-output").removeAttribute('style');
+    document.getElementById("console-output").innerHTML = '';
+
     document.getElementById("daily-units").value = "";
     document.getElementById("node-price").value = "";
     document.getElementById("initial-node-count").value = "";
@@ -250,5 +264,4 @@ function main() {
     document.getElementById("node-cap").value = "";
     document.getElementById("daily-units-final").value = "";
     document.getElementById("reinvest-ratio").value = "";
-
 }

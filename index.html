@@ -46,7 +46,11 @@
                 <label for="reinvest-ratio" class="label-calc">Reinvestment Ratio:</label><br>
                 <input type="number" class= "values-in" id = "reinvest-ratio" min="0">
             </div>
+            <div id="buttons">
                 <button type="submit" id = "button-submit" min="0" onclick="main()">Calculate</button>
+                <button type="submit" id = "button-clear" min="0" onclick="clearCalc()">Reset</button>
+            </div>
+                
         </div>
         <div id = 'console-output'></div>
         <canvas id = "myChart"></canvas>

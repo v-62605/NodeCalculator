@@ -218,7 +218,7 @@ function main() {
         simple();
     }
 
-    if (finalUnitSum === "" && initialNodeCount >= 1) {
+    if (finalUnitSum === "" && initialNodeCount >= 1 && dailyUnits != '' && nodePrice != "" && timeCap != "") {
         // document.getElementById("console-output").innerText = 'Please Wait...\n \n';
         boxCreate();
         complex();
@@ -227,7 +227,7 @@ function main() {
         consoleOutput += `\n \n DONE.`;
     }
 
-    if (initialNodeCount == "" && reinvestRatio != "" && nodePrice != "" && dailyUnits != "") {
+    if (initialNodeCount == "" && reinvestRatio != "" && nodePrice != "" && dailyUnits != "" && timeCap != "" && dailyUnitsFinal != "") {
         // document.getElementById("console-output").innerText = 'Please Wait... \n \n';
         boxCreate();
         reverse();

@@ -6,14 +6,8 @@ let boxClear = () => {
 
 //Create console output box
 let boxCreate = () => {
-  document.getElementById("console-output").style.margin = "auto";
-  document.getElementById("console-output").style.marginTop = "2%";
-  document.getElementById("console-output").style.padding = "1%";
   document.getElementById("console-output").style.border = "2px solid";
-  document.getElementById("console-output").style.borderColor =
-    "rgb(0, 255, 0)";
-  document.getElementById("console-output").style.width = "40%";
-  document.getElementById("console-output").style.fontSize = "12px";
+  document.getElementById("console-output").style.borderColor = "rgb(0, 255, 0)";
 };
 
 //Completely reset the calculator
@@ -30,17 +24,14 @@ let clearCalc = () => {
   document.getElementById("node-cap").value = "";
   document.getElementById("daily-units-final").value = "";
   document.getElementById("reinvest-ratio").value = "";
+
+	document.getElementById("buttons-b").innerHTML = "";
+
+  console.clear();
 };
 
 //Simple growth calulation
-function simple(
-  dailyUnits,
-  currentUnitSum,
-  finalUnitSum,
-  finalNodeCount,
-  time,
-  output = true
-) {
+function simple(dailyUnits, currentUnitSum, finalUnitSum, finalNodeCount, time, outputData = true) {
   let dailyUnitsUpdt;
   let consoleOutput = "";
   dailyUnits = Number(dailyUnits);
@@ -82,13 +73,12 @@ function complex(
   let dailyUnitsUpdt;
   let moneyPool;
 
+  let timeStamps = [];
+  let data = [];
+
   while (time <= timeCap) {
-    console.log(
-      ` Day: ${time}\n Current Unit Count (start): ${currentUnitSum.toFixed(2)}`
-    );
-    consoleOutput += ` Day: ${time}\n Current Unit Count (start): ${currentUnitSum.toFixed(
-      2
-    )}\n`;
+    console.log(` Day: ${time}\n Current Unit Count (start): ${currentUnitSum.toFixed(2)}`);
+    consoleOutput += ` Day: ${time}\n Current Unit Count (start): ${currentUnitSum.toFixed(2)}\n`;
 
     if (finalNodeCount < nodeCap) {
       //Buy nodes
@@ -106,9 +96,7 @@ function complex(
           currentUnitSum -= nodePrice * numnodes;
           finalNodeCount += numnodes;
           if (numnodes > 0) {
-            console.log(
-              ` Nodes Bought: ${numnodes}\n Node Count: ${finalNodeCount}`
-            );
+            console.log(` Nodes Bought: ${numnodes}\n Node Count: ${finalNodeCount}`);
             consoleOutput += ` Nodes Bought: ${numnodes}\n Node Count: ${finalNodeCount}\n`;
           }
         }
@@ -124,9 +112,7 @@ function complex(
     }
 
     console.log(` Current Unit Count (end): ${currentUnitSum.toFixed(2)}`);
-    consoleOutput += ` Current Unit Count (end): ${currentUnitSum.toFixed(
-      2
-    )}\n`;
+    consoleOutput += ` Current Unit Count (end): ${currentUnitSum.toFixed(2)}\n`;
 
     if (reinvestRatio < 1) {
       console.log(` Money Pool: ${moneyPool.toFixed(2)}`);
@@ -229,13 +215,9 @@ function reverse(
 
     if (finalNodeCount >= nodeCap) {
       console.log(`\n`);
-      console.log(
-        ` Initial Count: ${i}\t Initial Daily Units: ${dailyUnits * i}\n`
-      );
+      console.log(` Initial Count: ${i}\t Initial Daily Units: ${dailyUnits * i}\n`);
       consoleOutput += `\n`;
-      consoleOutput += ` Initial Count: ${i}\t Initial Daily Units: ${
-        dailyUnits * i
-      }\n`;
+      consoleOutput += ` Initial Count: ${i}\t Initial Daily Units: ${dailyUnits * i}\n`;
       e = 1;
       break;
     }
@@ -254,6 +236,29 @@ function reverse(
     return consoleOutput;
   }
 }
+
+let createChart = () => {
+  //Grab all relevant values for calulation
+  let dailyUnits = document.getElementById("daily-units").value;
+  let nodePrice = document.getElementById("node-price").value;
+  let initialNodeCount = document.getElementById("initial-node-count").value;
+  let finalUnitSum = document.getElementById("final-unit-sum").value;
+  let timeCap = document.getElementById("time-cap").value;
+  let nodeCap = document.getElementById("node-cap").value;
+  let dailyUnitsFinal = document.getElementById("daily-units-final").value;
+  let reinvestRatio = document.getElementById("reinvest-ratio").value;
+
+  let time = 1;
+  let currentUnitSum = 0;
+  let finalNodeCount = Number(initialNodeCount);
+  let dailyUnitsUpdt = 0;
+
+  if (nodeCap === -1 || nodeCap === "") {
+    nodeCap = 10000000000000000000000000000000;
+  }
+
+  console.log("Create Click");
+};
 
 function main() {
   //Grab all relevant values for calulation
@@ -279,30 +284,13 @@ function main() {
 
   let consoleOutput;
 
-  if (
-    timeCap == "" &&
-    finalUnitSum !== "" &&
-    reinvestRatio == "" &&
-    dailyUnits != 0
-  ) {
+  if (timeCap == "" && finalUnitSum !== "" && reinvestRatio == "" && dailyUnits != 0) {
     // document.getElementById("console-output").innerText = 'Please Wait...\n \n';
     boxCreate();
-    consoleOutput = simple(
-      dailyUnits,
-      currentUnitSum,
-      finalUnitSum,
-      finalNodeCount,
-      time
-    );
+    consoleOutput = simple(dailyUnits, currentUnitSum, finalUnitSum, finalNodeCount, time);
   }
 
-  if (
-    finalUnitSum === "" &&
-    initialNodeCount >= 1 &&
-    dailyUnits != "" &&
-    nodePrice != "" &&
-    timeCap != ""
-  ) {
+  if (finalUnitSum === "" && initialNodeCount >= 1 && dailyUnits != "" && nodePrice != "" && timeCap != "") {
     // document.getElementById("console-output").innerText = 'Please Wait...\n \n';
     boxCreate();
     consoleOutput = complex(
@@ -316,6 +304,9 @@ function main() {
       finalNodeCount,
       true
     );
+
+    let chartButton = `<button type="submit" id="button-create" onclick="createChart()">Create Chart</button>`
+    document.getElementById("buttons-b").innerHTML = chartButton;
   }
 
   if (
@@ -342,9 +333,10 @@ function main() {
     );
   }
 
-  document.getElementById("console-output").innerText = consoleOutput;
-
-  console.log("Button Working");
+  if (consoleOutput != undefined) {
+    document.getElementById("console-output").innerText = consoleOutput;
+  }
+  console.log("Click");
 
   // Reset calulator to empty variables
   // document.getElementById("daily-units").value = "";

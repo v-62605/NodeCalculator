@@ -11,28 +11,28 @@ let boxCreate = () => {
 };
 
 let chartClear = () => {
-	document.getElementById("console-output").removeAttribute("style");
-	document.getElementById("canvas").innerHTML = ""
-	document.getElementById("canvas").style.border = "";
-}
+  document.getElementById("console-output").removeAttribute("style");
+  document.getElementById("canvas").innerHTML = "";
+  document.getElementById("canvas").style.border = "";
+};
 
 let chartUp = () => {
-	document.getElementById("canvas").style.margin = "0.5%";
-	document.getElementById("canvas").style.padding = "0.5%";
-	document.getElementById("button-create").style.margin = "0.5%";
-	document.getElementById("console-output").style.margin = "0%";
-	document.getElementById("console-output").style.padding = "0%";
-}
+  document.getElementById("canvas").style.margin = "0.5%";
+  document.getElementById("canvas").style.padding = "0.5%";
+  document.getElementById("button-create").style.margin = "0.5%";
+  document.getElementById("console-output").style.margin = "0%";
+  document.getElementById("console-output").style.padding = "0%";
+};
 
 let chartBoxCreate = () => {
-	document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
-}
+  document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
+};
 
 //Completely reset the calculator
 //To add ability to clear chart
 let clearCalc = () => {
   boxClear();
-	chartClear();
+  chartClear();
 
   document.getElementById("daily-units").value = "";
   document.getElementById("node-price").value = "";
@@ -301,15 +301,15 @@ let createChart = () => {
   let timeLabels = data[0];
   let nodeArr = data[1];
   let moneyArr = data[2];
-	
-	boxClear();
-	chartClear();
-	chartUp();
-	chartBoxCreate();
 
-	document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`
-	
-	const canvas = document.getElementById("myChart")
+  boxClear();
+  chartClear();
+  chartUp();
+  chartBoxCreate();
+
+  document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`;
+
+  const canvas = document.getElementById("myChart");
   const ctx = document.getElementById("myChart").getContext("2d");
   const myChart = new Chart(ctx, {
     type: "bar",
@@ -320,17 +320,17 @@ let createChart = () => {
           label: "Nodes",
           data: nodeArr,
           backgroundColor: "rgba(0, 255, 0, 1)",
-					borderColor: "rgba(0, 255, 0, 1)",
+          borderColor: "rgba(0, 255, 0, 1)",
           borderWidth: 0,
-					order: 1
+          order: 1,
         },
         {
           label: "Money Pool",
           data: moneyArr,
           backgroundColor: "rgba(255, 0, 0, 1)",
-					borderColor: "rgba(255, 0, 0, 1)",
+          borderColor: "rgba(255, 0, 0, 1)",
           borderWidth: 0,
-					order:2
+          order: 2,
         },
       ],
     },
@@ -339,14 +339,14 @@ let createChart = () => {
         y: {
           beginAtZero: true,
         },
-				x: {
-					text: "Days",
-				}
+        x: {
+          text: "Days",
+        },
       },
     },
   });
 
-	console.log(moneyArr);
+  console.log(moneyArr);
 };
 
 function main() {
@@ -372,7 +372,7 @@ function main() {
   }
 
   boxClear();
-	chartClear();
+  chartClear();
 
   let consoleOutput;
 

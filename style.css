@@ -54,7 +54,7 @@
     width: 40%;
     text-align: center;
     margin: auto;
-    gap: 0% 1%;
+    gap: 0% 2%;
 
 }
 
@@ -98,8 +98,8 @@
     display: flex;
     flex-direction: row;
     justify-content:space-between;
-    width: 100%;
-    padding: 1%;
+    margin-top: 0.5%;
+    margin-bottom: 2%;
     /* border: 1px solid; */
 }
 
@@ -107,8 +107,6 @@
     display: flex;
     flex-direction: row;
     justify-content:center;
-    width: 100%;
-    padding: 1%;
     /* border: 1px solid; */
 }
 
@@ -118,11 +116,10 @@
     font-weight: bold;
     padding: 0.6rem;
     border: 0.01rem solid;
-    width: 50%;
     cursor: pointer;
     border-radius: 0.5rem;
     background-color: rgb(0, 0, 0);
-    flex-grow: 4;
+    flex-grow: 10;
 }
 
 #button-submit:hover{
@@ -137,8 +134,8 @@
     font-weight: bold;
     padding: 0.2rem;
     border: 0.01rem solid;
-    width: 15%;
     cursor: pointer;
+    flex-grow: 1;
     border-radius: 0.5rem;
     background-color: rgb(0, 0, 0);
 }
@@ -155,7 +152,7 @@
     font-weight: bold;
     padding: 0.6rem;
     border: 0.01rem solid;
-    width: 90%;
+    flex-grow: 0.9;
     cursor: pointer;
     border-radius: 0.5rem;
     background-color: rgb(0, 0, 0);
@@ -171,12 +168,11 @@
 #console-output{
     display: flex;
     flex-direction: row;
-    justify-content:left;
+    justify-content:flex-start;
     text-align: left;
-    width: 90%;
     padding: 2%;
-    margin: auto;
-    margin-top: 1%;
-    padding-left: 2%;
+    padding-left: 2.5%;
     font-size: 12px;
+    margin-bottom: 2%;
+    margin-top: 1%;
 }

@@ -1,66 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Node Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon"  href="favicon.ico">
-    <link rel="manifest" href="site.webmanifest">
-    <script src = "script.js"></script>
-</head>
-<body>
-    <div id = "nav">
-        <a href="index.html", id = "title-nav">Node Calculator</a> 
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
+      integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="nav">
+      <a href="index.html" , id="title-nav">Node Calculator</a>
     </div>
-    <div id = "body">
-        <div id = "calculator">
-            <div class = "input-box">
-                <label for="daily-units" class="label-calc">Daily Units:</label><br>
-                <input type="number" class= "values-in" id = "daily-units" min="0"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="node-price" class="label-calc">Node Price:</label><br>
-                <input type="number" class= "values-in" id = "node-price" min="0"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="initial-node-count" class="label-calc">Initial Node Count:</label><br> 
-                <input type="number" class= "values-in" id = "initial-node-count" min="-1"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="final-unit-sum" class="label-calc">Final Sum:</label><br> 
-                <input type="number" class= "values-in" id = "final-unit-sum" min="-1"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="time-cap" class="label-calc">Time Cap:</label><br> 
-                <input type="number" class= "values-in" id = "time-cap" min="-1"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="node-cap" class="label-calc">Node Cap:</label><br> 
-                <input type="number" class= "values-in" id = "node-cap" min="-1"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="daily-units-final" class="label-calc">Daily Expected Units:</label><br> 
-                <input type="number" class= "values-in" id = "daily-units-final" min="-1"> <br>
-            </div>
-            <div class = "input-box">
-                <label for="reinvest-ratio" class="label-calc">Reinvestment Ratio:</label><br>
-                <input type="number" class= "values-in" id = "reinvest-ratio" min="0">
-            </div>
-            <div id="buttons">
-                <button type="submit" id = "button-submit" min="0" onclick="main()">Calculate</button>
-                <button type="submit" id = "button-clear" min="0" onclick="clearCalc()">Reset</button>
-            </div>
-                
+    <div id="body">
+      <div id="calculator">
+        <div class="input-box">
+          <label for="daily-units" class="label-calc">Daily Units:</label><br />
+          <input type="number" class="values-in" id="daily-units" min="0" />
+          <br />
         </div>
-        <div id = 'console-output'></div>
-        <canvas id = "myChart"></canvas>
-        <div id = "tutorial"></div>
+        <div class="input-box">
+          <label for="node-price" class="label-calc">Node Price:</label><br />
+          <input type="number" class="values-in" id="node-price" min="0" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="initial-node-count" class="label-calc">Initial Node Count:</label><br />
+          <input type="number" class="values-in" id="initial-node-count" min="-1" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="final-unit-sum" class="label-calc">Final Sum:</label><br />
+          <input type="number" class="values-in" id="final-unit-sum" min="-1" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="time-cap" class="label-calc">Time Cap:</label><br />
+          <input type="number" class="values-in" id="time-cap" min="-1" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="node-cap" class="label-calc">Node Cap:</label><br />
+          <input type="number" class="values-in" id="node-cap" min="-1" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="daily-units-final" class="label-calc">Daily Expected Units:</label><br />
+          <input type="number" class="values-in" id="daily-units-final" min="-1" />
+          <br />
+        </div>
+        <div class="input-box">
+          <label for="reinvest-ratio" class="label-calc">Reinvestment Ratio:</label><br />
+          <input type="number" class="values-in" id="reinvest-ratio" min="0" />
+        </div>
+        <div id="buttons">
+          <button type="submit" id="button-submit" min="0" onclick="main()">Calculate</button>
+          <button type="submit" id="button-clear" min="0" onclick="clearCalc()">Reset</button>
+        </div>
+        <div id="console-output"></div>
+        <div id="buttons-b"></div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <div id="tutorial"></div>
     </div>
-    <div id = "footer"></div>
-</body>
+    <div id="footer"></div>
+  </body>
 </html>

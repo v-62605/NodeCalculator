@@ -10,11 +10,29 @@ let boxCreate = () => {
   document.getElementById("console-output").style.borderColor = "rgb(0, 255, 0)";
 };
 
+let chartClear = () => {
+	document.getElementById("console-output").removeAttribute("style");
+	document.getElementById("canvas").innerHTML = ""
+	document.getElementById("canvas").style.border = "";
+}
+
+let chartUp = () => {
+	document.getElementById("canvas").style.margin = "0.5%";
+	document.getElementById("canvas").style.padding = "0.5%";
+	document.getElementById("button-create").style.margin = "0.5%";
+	document.getElementById("console-output").style.margin = "0%";
+	document.getElementById("console-output").style.padding = "0%";
+}
+
+let chartBoxCreate = () => {
+	document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
+}
+
 //Completely reset the calculator
 //To add ability to clear chart
 let clearCalc = () => {
-  document.getElementById("console-output").removeAttribute("style");
-  document.getElementById("console-output").innerHTML = "";
+  boxClear();
+	chartClear();
 
   document.getElementById("daily-units").value = "";
   document.getElementById("node-price").value = "";
@@ -283,10 +301,13 @@ let createChart = () => {
   let timeLabels = data[0];
   let nodeArr = data[1];
   let moneyArr = data[2];
+	
+	boxClear();
+	chartClear();
+	chartUp();
+	chartBoxCreate();
 
-	document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`;
-	document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
-
+	document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`
 	
 	const canvas = document.getElementById("myChart")
   const ctx = document.getElementById("myChart").getContext("2d");
@@ -351,6 +372,7 @@ function main() {
   }
 
   boxClear();
+	chartClear();
 
   let consoleOutput;
 

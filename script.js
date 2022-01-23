@@ -25,7 +25,7 @@ let clearCalc = () => {
   document.getElementById("daily-units-final").value = "";
   document.getElementById("reinvest-ratio").value = "";
 
-	document.getElementById("buttons-b").innerHTML = "";
+  document.getElementById("buttons-b").innerHTML = "";
 
   console.clear();
 };
@@ -62,7 +62,8 @@ function complex(
   time,
   currentUnitSum,
   finalNodeCount,
-  outputData = true
+  outputData = true,
+  arrayOutput = false
 ) {
   dailyUnits = Number(dailyUnits);
   nodePrice = Number(nodePrice);
@@ -71,10 +72,11 @@ function complex(
   reinvestRatio = Number(reinvestRatio);
   let consoleOutput = "";
   let dailyUnitsUpdt;
-  let moneyPool;
+  let moneyPool = 0;
 
   let timeStamps = [];
-  let data = [];
+  let nodeArr = [];
+  let moneyArr = [];
 
   while (time <= timeCap) {
     console.log(` Day: ${time}\n Current Unit Count (start): ${currentUnitSum.toFixed(2)}`);
@@ -114,6 +116,10 @@ function complex(
     console.log(` Current Unit Count (end): ${currentUnitSum.toFixed(2)}`);
     consoleOutput += ` Current Unit Count (end): ${currentUnitSum.toFixed(2)}\n`;
 
+    moneyArr.push(moneyPool);
+    timeStamps.push(time);
+    nodeArr.push(finalNodeCount);
+
     if (reinvestRatio < 1) {
       console.log(` Money Pool: ${moneyPool.toFixed(2)}`);
       consoleOutput += ` Money Pool: ${moneyPool.toFixed(2)}\n`;
@@ -137,8 +143,10 @@ function complex(
 		 Daily Units Final: ${dailyUnitsUpdt.toFixed(2)}\n`;
   consoleOutput += `\n \n DONE.`;
 
-  if (outputData == true) {
+  if (outputData == true && arrayOutput == false) {
     return consoleOutput;
+  } else if ((arrayOutput == true, outputData == false)) {
+    return [timeStamps, nodeArr, moneyArr];
   }
 }
 
@@ -258,6 +266,66 @@ let createChart = () => {
   }
 
   console.log("Create Click");
+
+  data = complex(
+    dailyUnits,
+    nodePrice,
+    timeCap,
+    nodeCap,
+    reinvestRatio,
+    time,
+    currentUnitSum,
+    finalNodeCount,
+    false,
+    true
+  );
+
+  let timeLabels = data[0];
+  let nodeArr = data[1];
+  let moneyArr = data[2];
+
+	document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`;
+	document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
+
+	
+	const canvas = document.getElementById("myChart")
+  const ctx = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: timeLabels,
+      datasets: [
+        {
+          label: "Nodes",
+          data: nodeArr,
+          backgroundColor: "rgba(0, 255, 0, 1)",
+					borderColor: "rgba(0, 255, 0, 1)",
+          borderWidth: 0,
+					order: 1
+        },
+        {
+          label: "Money Pool",
+          data: moneyArr,
+          backgroundColor: "rgba(255, 0, 0, 1)",
+					borderColor: "rgba(255, 0, 0, 1)",
+          borderWidth: 0,
+					order:2
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+				x: {
+					text: "Days",
+				}
+      },
+    },
+  });
+
+	console.log(moneyArr);
 };
 
 function main() {
@@ -275,6 +343,8 @@ function main() {
   let currentUnitSum = 0;
   let finalNodeCount = Number(initialNodeCount);
   let dailyUnitsUpdt = 0;
+
+  let chartButton = `<button type="submit" id="button-create" onclick="createChart()">Create Chart</button>`;
 
   if (nodeCap === -1 || nodeCap === "") {
     nodeCap = 10000000000000000000000000000000;
@@ -305,7 +375,6 @@ function main() {
       true
     );
 
-    let chartButton = `<button type="submit" id="button-create" onclick="createChart()">Create Chart</button>`
     document.getElementById("buttons-b").innerHTML = chartButton;
   }
 

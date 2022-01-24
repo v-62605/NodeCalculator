@@ -17,9 +17,8 @@ let chartClear = () => {
 };
 
 let chartUp = () => {
-  document.getElementById("canvas").style.margin = "0.5%";
-  document.getElementById("canvas").style.padding = "0.5%";
-  document.getElementById("button-create").style.margin = "0.5%";
+  document.getElementById("canvas").style.margin = "1%";
+  // document.getElementById("button-create").style.margin = "0.5%";
   document.getElementById("console-output").style.margin = "0%";
   document.getElementById("console-output").style.padding = "0%";
 };
@@ -338,9 +337,6 @@ let createChart = () => {
       scales: {
         y: {
           beginAtZero: true,
-        },
-        x: {
-          text: "Days",
         },
       },
     },

@@ -24,7 +24,6 @@
     background-color: rgba(0, 255, 0, 0.5);
   }
 
-
 *{
     background-color: black;
     color: white;
@@ -178,7 +177,19 @@
     margin-top: 1%;
 }
 
+#body{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
 #canvas{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
     margin-top: 3%;
     padding: 2%;
+    width: 70%;
 }

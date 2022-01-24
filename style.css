@@ -1,195 +1,194 @@
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: rgb(0, 255, 0) #222222;
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 0.75rem;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #222222;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: rgb(0, 255, 0);
-    border-radius: 1.5px;
-    border: 0px solid #ffffff;
-  }
-
-  *::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 255, 0, 0.5);
-  }
-
-*{
-    background-color: black;
-    color: white;
-    font-family: "Lucida Console", "Courier New", monospace;
-}
-#nav{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    padding: 20px;
-    text-align: center;
-}
-#title-nav{
-    font-size: 70px;
-    color: rgb(0, 255, 0);
-    text-decoration: none;
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(0, 255, 0) #222222;
 }
 
-#title-nav:hover{
-    color: rgb(0, 255, 0);
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 0.75rem;
 }
 
-#calculator{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    width: 40%;
-    text-align: center;
-    margin: auto;
-    gap: 0% 2%;
-
+*::-webkit-scrollbar-track {
+  background: #222222;
 }
 
-.input-box{
-    display: inline-block;
-    padding: 1%;
-    border: 1px solid;
-    border-radius: 20px;
-    border-color: black;
-    padding: 1.25%;
-    margin-bottom: 1.25%;
-    background-color: rgb(15, 15, 15);
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 255, 0);
+  border-radius: 1.5px;
+  border: 0px solid #ffffff;
 }
 
-.label-calc{
-    display: inline-block;
-    color: rgb(0, 255, 0);
-    background-color: rgb(15, 15, 15);
-    font-size:1rem;
-    text-align: left;
-    width: 40%;
-    margin-bottom: 1%;
-}
-.values-in{
-    padding: 1.5%;
-    width: 40%;
-    background-color: rgb(0, 32, 0);
-    border-width: 1px;
-    border-style: none;
-    border-radius: 50px;
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 255, 0, 0.5);
 }
 
-.values-in:hover{
-    background-color: black;
+* {
+  background-color: black;
+  color: white;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+#nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+#title-nav {
+  font-size: 70px;
+  color: rgb(0, 255, 0);
+  text-decoration: none;
 }
 
-.values-in:focus{
-    background-color: black;
+#title-nav:hover {
+  color: rgb(0, 255, 0);
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  text-align: center;
+  margin: auto;
+  gap: 0% 2%;
+}
+
+.input-box {
+  display: inline-block;
+  padding: 1%;
+  border: 1px solid;
+  border-radius: 20px;
+  border-color: black;
+  padding: 1.25%;
+  margin-bottom: 1.25%;
+  background-color: rgb(15, 15, 15);
+}
+
+.label-calc {
+  display: inline-block;
+  color: rgb(0, 255, 0);
+  background-color: rgb(15, 15, 15);
+  font-size: 1rem;
+  text-align: left;
+  width: 40%;
+  margin-bottom: 1%;
+}
+.values-in {
+  padding: 1.5%;
+  width: 40%;
+  background-color: rgb(0, 32, 0);
+  border-width: 1px;
+  border-style: none;
+  border-radius: 50px;
+}
+
+.values-in:hover {
+  background-color: black;
+}
+
+.values-in:focus {
+  background-color: black;
 }
 
 #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    margin-top: 0.5%;
-    margin-bottom: 2%;
-    /* border: 1px solid; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.5%;
+  margin-bottom: 2%;
+  /* border: 1px solid; */
 }
 
 #buttons-b {
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    /* border: 1px solid; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* border: 1px solid; */
 }
 
-#button-submit{
-    transition-duration: 0.4s;
-    margin-right: 1%;
-    font-weight: bold;
-    padding: 0.6rem;
-    border: 0.01rem solid;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    background-color: rgb(0, 0, 0);
-    flex-grow: 10;
+#button-submit {
+  transition-duration: 0.4s;
+  margin-right: 1%;
+  font-weight: bold;
+  padding: 0.6rem;
+  border: 0.01rem solid;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0);
+  flex-grow: 10;
 }
 
-#button-submit:hover{
-    background-color: rgb(0, 255, 0); 
-    color: rgb(15, 15, 15);
-    border-radius: 50px;
-    border-color: black; 
+#button-submit:hover {
+  background-color: rgb(0, 255, 0);
+  color: rgb(15, 15, 15);
+  border-radius: 50px;
+  border-color: black;
 }
 
-#button-clear{
-    transition-duration: 0.4s;
-    font-weight: bold;
-    padding: 0.2rem;
-    border: 0.01rem solid;
-    cursor: pointer;
-    flex-grow: 1;
-    border-radius: 0.5rem;
-    background-color: rgb(0, 0, 0);
+#button-clear {
+  transition-duration: 0.4s;
+  font-weight: bold;
+  padding: 0.2rem;
+  border: 0.01rem solid;
+  cursor: pointer;
+  flex-grow: 1;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0);
 }
 
-#button-clear:hover{
-    background-color: rgb(255, 0, 0); 
-    color: rgb(255, 255, 255);
-    border-radius: 50px;
-    border-color: black; 
+#button-clear:hover {
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 50px;
+  border-color: black;
 }
 
-#button-create{
-    transition-duration: 0.4s;
-    font-weight: bold;
-    padding: 0.6rem;
-    border: 0.01rem solid;
-    flex-grow: 1;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    background-color: rgb(0, 0, 0);
+#button-create {
+  transition-duration: 0.4s;
+  font-weight: bold;
+  padding: 0.6rem;
+  border: 0.01rem solid;
+  flex-grow: 1;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0);
 }
 
-#button-create:hover{
-    background-color: rgb(0, 255, 0); 
-    color: rgb(0, 0, 0);
-    border-radius: 50px;
-    border-color: black; 
+#button-create:hover {
+  background-color: rgb(0, 255, 0);
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  border-color: black;
 }
 
-#console-output{
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    text-align: left;
-    padding: 2%;
-    padding-left: 2.5%;
-    font-size: 12px;
-    margin-bottom: 2%;
-    margin-top: 1%;
+#console-output {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 2%;
+  padding-left: 2.5%;
+  font-size: 12px;
+  margin-bottom: 2%;
+  margin-top: 1%;
 }
 
-#body{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
+#body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#canvas{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    margin-top: 3%;
-    padding: 2%;
-    width: 70%;
+#canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+  padding: 2%;
+  width: 70%;
 }

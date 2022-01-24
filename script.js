@@ -18,7 +18,6 @@ let chartClear = () => {
 
 let chartUp = () => {
   document.getElementById("canvas").style.margin = "1%";
-  // document.getElementById("button-create").style.margin = "0.5%";
   document.getElementById("console-output").style.margin = "0%";
   document.getElementById("console-output").style.padding = "0%";
 };
@@ -424,14 +423,4 @@ function main() {
     document.getElementById("console-output").innerText = consoleOutput;
   }
   console.log("Click");
-
-  // Reset calulator to empty variables
-  // document.getElementById("daily-units").value = "";
-  // document.getElementById("node-price").value = "";
-  // document.getElementById("initial-node-count").value = "";
-  // document.getElementById("final-unit-sum").value = "";
-  // document.getElementById("time-cap").value = "";
-  // document.getElementById("node-cap").value = "";
-  // document.getElementById("daily-units-final").value = "";
-  // document.getElementById("reinvest-ratio").value = "";
 }

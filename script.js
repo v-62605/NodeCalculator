@@ -146,7 +146,7 @@ function complex(
     consoleOutput += `\n`;
   }
 
-  finalUnitSum = currentUnitSum;
+  let finalUnitSum = currentUnitSum;
 
   console.log(` Time: ${time - 1} days
 		 Final Unit Count: ${finalUnitSum.toFixed(2)}
@@ -188,7 +188,6 @@ function reverse(
   let dailyUnitsUpdt;
   let moneyPool;
 
-  initialNodeCount = 1;
   nodeCap = Math.floor(dailyUnitsFinal / dailyUnits);
   let trueTime = 0;
   let e = -1;
@@ -227,6 +226,7 @@ function reverse(
     }
 
     console.log(` Final Node Count: ${finalNodeCount}`);
+    console.log(` Final Node Count: ${moneyPool}`);
     consoleOutput += ` Final Node Count: ${finalNodeCount}\n`;
 
     if (trueTime > 0) {
@@ -283,7 +283,7 @@ let createChart = () => {
 
   console.log("Create Click");
 
-  data = complex(
+  let data = complex(
     dailyUnits,
     nodePrice,
     timeCap,

@@ -323,7 +323,7 @@ let reinvestFunc = (
   let nodeAmtList = [];
   let reinvestRatioList = [];
 
-  for (let i = 0; i < 1.0; i += 0.01) {
+  for (let i = 0; i <= 1.0; i += 0.01) {
     reinvestRatioList.push(i.toFixed(2));
     let data = complex(
       dailyUnits,

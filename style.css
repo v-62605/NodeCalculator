@@ -1,6 +1,6 @@
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap");
 
 * {
   scrollbar-width: auto;
@@ -29,7 +29,8 @@
 * {
   background-color: black;
   color: white;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
+  background-color: rgb(7, 7, 7);
 }
 #nav {
   display: flex;
@@ -37,17 +38,16 @@
   justify-content: center;
   padding: 20px;
   text-align: center;
-  
 }
 #title-nav {
   font-size: 70px;
   font-weight: bold;
   color: rgb(0, 255, 0);
   text-decoration: none;
-}
-
-#title-nav:hover {
-  color: rgb(0, 255, 0);
+  background: linear-gradient(90deg, rgba(0, 255, 0, 1) 0%, rgba(126, 255, 126, 1) 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 #calculator {
@@ -63,38 +63,49 @@
 .input-box {
   display: inline-block;
   padding: 1%;
-  border: 1px solid;
+  /* border: 1.5px solid; */
+  -webkit-box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
-  border-color: black;
+  /* border: 0.01rem solid; */
+  border-color: rgb(75, 75, 75);
   padding: 1.25%;
   margin-bottom: 1.25%;
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(7, 7, 7);
+  background-image: linear-gradient(135deg, rgb(10, 10, 10) 0%, rgb(15, 15, 15) 100%);
 }
 
 .label-calc {
   display: inline-block;
   color: rgb(0, 255, 0);
   background-color: rgb(15, 15, 15);
+  font-weight: bold;
   font-size: 1rem;
   text-align: left;
   width: 40%;
   margin-bottom: 1%;
+  background: linear-gradient(90deg, rgba(0, 255, 0, 1) 0%, rgba(126, 255, 126, 1) 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
+
 .values-in {
   padding: 1.5%;
   width: 40%;
-  background-color: rgb(0, 32, 0);
+  background-color: rgb(7, 7, 7);
   border-width: 1px;
   border-style: none;
   border-radius: 50px;
+  background-image: linear-gradient(40deg, rgb(0, 0, 0) 0%, rgb(10, 10, 10) 100%);
 }
 
 .values-in:hover {
-  background-color: black;
+  background-image: linear-gradient(60deg, #171c22 0%, #323b44 100%);
 }
 
 .values-in:focus {
-  background-color: black;
+  background-image: linear-gradient(60deg, #171c22 0%, #323b44 100%);
 }
 
 #buttons {
@@ -121,16 +132,20 @@
   border: 0.01rem solid;
   cursor: pointer;
   border-radius: 0.5rem;
-  background-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
   flex-grow: 10;
+  -webkit-box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  border-color: rgb(75, 75, 75);
+  background-image: linear-gradient(90deg, rgb(10, 10, 10) 0%, rgb(15, 15, 15) 100%);
 }
 
 #button-submit:hover {
   /* background-color: rgb(0 , 255, 0); */
-  background: linear-gradient(90deg, rgba(0,255,0,1) 0%, rgba(126,255,126,1) 100%);
+  background: linear-gradient(90deg, rgba(0, 255, 0, 1) 0%, rgba(126, 255, 126, 1) 100%);
   color: rgb(15, 15, 15);
   border-radius: 50px;
-  border-color: black;
+  border-color: rgb(7, 7, 7);
 }
 
 #button-clear {
@@ -141,11 +156,15 @@
   cursor: pointer;
   flex-grow: 1;
   border-radius: 0.5rem;
-  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(90deg, rgb(10, 10, 10) 0%, rgb(15, 15, 15) 100%);
+  border-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  border-color: rgb(75, 75, 75);
 }
 
 #button-clear:hover {
-  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,0,117,1) 100%);
+  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 117, 1) 100%);
   color: rgb(255, 255, 255);
   border-radius: 50px;
   border-color: black;
@@ -159,12 +178,16 @@
   flex-grow: 1;
   cursor: pointer;
   border-radius: 0.5rem;
-  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(90deg, rgb(10, 10, 10) 0%, rgb(15, 15, 15) 100%);
+  border-color: rgb(255, 254, 254);
+  -webkit-box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.7);
+  border-color: rgb(75, 75, 75);
 }
 
 #button-create:hover {
   /* background-color: rgb(155, 14, 199); */
-  background: linear-gradient(90deg, rgba(0,135,255,1) 0%, rgba(247,0,255,1) 100%);
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   color: rgb(255, 255, 255);
   border-radius: 50px;
   border-color: black;
@@ -202,9 +225,8 @@
 #buttons-extra {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start ;
-  align-items:center;
+  justify-content: flex-start;
+  align-items: center;
   flex-grow: 1;
   width: 45%;
 }
-

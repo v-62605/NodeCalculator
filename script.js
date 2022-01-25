@@ -158,7 +158,7 @@ function complex(
   consoleOutput += ` Time: ${time - 1} days
 		 Final Unit Count: ${finalUnitSum.toFixed(2)}
 		 Final Node Count: ${finalNodeCount}
-		 Daily Units Final: ${dailyUnitsUpdt.toFixed(2)}
+		 Daily Units Final: ${(finalNodeCount*dailyUnits).toFixed(2)}
      Final Money Pool: ${moneyPool.toFixed(2)}\n`;
   consoleOutput += `\n \n DONE.`;
 

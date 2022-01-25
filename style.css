@@ -37,9 +37,11 @@
   justify-content: center;
   padding: 20px;
   text-align: center;
+  
 }
 #title-nav {
   font-size: 70px;
+  font-weight: bold;
   color: rgb(0, 255, 0);
   text-decoration: none;
 }
@@ -162,8 +164,8 @@
 
 #button-create:hover {
   /* background-color: rgb(155, 14, 199); */
-  background: linear-gradient(90deg, rgba(0,255,0,1) 0%, rgba(0,255,255,1) 100%);
-  color: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0,135,255,1) 0%, rgba(247,0,255,1) 100%);
+  color: rgb(255, 255, 255);
   border-radius: 50px;
   border-color: black;
 }

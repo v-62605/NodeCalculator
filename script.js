@@ -42,6 +42,8 @@ let clearCalc = () => {
   document.getElementById("reinvest-ratio").value = "";
 
   document.getElementById("buttons-b").innerHTML = "";
+  document.getElementById("buttons-extra").innerHTML = "";
+
 
   console.clear();
 };
@@ -156,13 +158,14 @@ function complex(
   consoleOutput += ` Time: ${time - 1} days
 		 Final Unit Count: ${finalUnitSum.toFixed(2)}
 		 Final Node Count: ${finalNodeCount}
-		 Daily Units Final: ${dailyUnitsUpdt.toFixed(2)}\n`;
+		 Daily Units Final: ${dailyUnitsUpdt.toFixed(2)}
+     Final Money Pool: ${moneyPool.toFixed(2)}\n`;
   consoleOutput += `\n \n DONE.`;
 
   if (outputData == true && arrayOutput == false) {
     return consoleOutput;
   } else if ((arrayOutput == true, outputData == false)) {
-    return [timeStamps, nodeArr, moneyArr];
+    return [timeStamps, nodeArr, moneyArr, moneyPool, finalNodeCount];
   }
 }
 
@@ -261,7 +264,111 @@ function reverse(
   }
 }
 
-let createChart = () => {
+let createChart = (labelsX, data1, data2, chartType) => {
+
+  boxClear();
+  chartClear();
+  chartUp();
+  chartBoxCreate();
+
+  document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`;
+
+  const ctx = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: chartType,
+    data: {
+      labels: labelsX,
+      datasets: [
+        {
+          label: "Nodes",
+          data: data1,
+          backgroundColor: "rgba(0, 255, 0, 1)",
+          borderColor: "rgba(0, 255, 0, 1)",
+          borderWidth: 0,
+          order: 1,
+          tension: 0.1,
+        },
+        {
+          label: "Money Pool",
+          data: data2,
+          backgroundColor: "rgba(255, 0, 0, 1)",
+          borderColor: "rgba(255, 0, 0, 1)",
+          borderWidth: 0,
+          order: 2,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+};
+
+let reinvestFunc = (
+  dailyUnits,
+  nodePrice,
+  timeCap,
+  nodeCap,
+  time,
+  currentUnitSum,
+  finalNodeCount,
+  outputData = false,
+  arrayOutput = true
+) => {
+  let moneyPoolList = [];
+  let nodeAmtList = [];
+  let reinvestRatioList = [];
+
+  for (let i = 0; i < 1.0; i += 0.005) {
+    reinvestRatioList.push(i.toFixed(2));
+    let data = complex(
+      dailyUnits,
+      nodePrice,
+      timeCap,
+      nodeCap,
+      i,
+      time,
+      currentUnitSum,
+      finalNodeCount,
+      (outputData = false),
+      (arrayOutput = true)
+    );
+
+    moneyPoolList.push(data[3]);
+    nodeAmtList.push(data[4]);
+  }
+
+  return [reinvestRatioList, nodeAmtList, moneyPoolList];
+};
+
+let createReinvestChart = () => {
+  let dailyUnits = document.getElementById("daily-units").value;
+  let nodePrice = document.getElementById("node-price").value;
+  let initialNodeCount = document.getElementById("initial-node-count").value;
+  let timeCap = document.getElementById("time-cap").value;
+  let nodeCap = document.getElementById("node-cap").value;
+
+  let time = 1;
+  let currentUnitSum = 0;
+  let finalNodeCount = Number(initialNodeCount);
+  let dailyUnitsUpdt = 0;
+
+  if (nodeCap === -1 || nodeCap === "") {
+    nodeCap = 10000000000000000000000000000000;
+  }
+
+  let data = reinvestFunc(dailyUnits, nodePrice, timeCap, nodeCap, time, currentUnitSum, finalNodeCount);
+
+  createChart(data[0], data[1], data[2], "line");
+
+  console.log("Create Reinvest Chart");
+};
+
+let createSimpleChart = () => {
   //Grab all relevant values for calulation
   let dailyUnits = document.getElementById("daily-units").value;
   let nodePrice = document.getElementById("node-price").value;
@@ -276,12 +383,13 @@ let createChart = () => {
   let currentUnitSum = 0;
   let finalNodeCount = Number(initialNodeCount);
   let dailyUnitsUpdt = 0;
+  let reinvestButton = `<button type="submit" id="button-create" onclick="createReinvestChart()">Create Reinvestment Chart</button>`
 
   if (nodeCap === -1 || nodeCap === "") {
     nodeCap = 10000000000000000000000000000000;
   }
 
-  console.log("Create Click");
+  console.log("Create Simple");
 
   let data = complex(
     dailyUnits,
@@ -300,48 +408,11 @@ let createChart = () => {
   let nodeArr = data[1];
   let moneyArr = data[2];
 
-  boxClear();
-  chartClear();
-  chartUp();
-  chartBoxCreate();
-
-  document.getElementById("canvas").innerHTML = `<canvas id="myChart"></canvas>`;
-
-  const canvas = document.getElementById("myChart");
-  const ctx = document.getElementById("myChart").getContext("2d");
-  const myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: timeLabels,
-      datasets: [
-        {
-          label: "Nodes",
-          data: nodeArr,
-          backgroundColor: "rgba(0, 255, 0, 1)",
-          borderColor: "rgba(0, 255, 0, 1)",
-          borderWidth: 0,
-          order: 1,
-        },
-        {
-          label: "Money Pool",
-          data: moneyArr,
-          backgroundColor: "rgba(255, 0, 0, 1)",
-          borderColor: "rgba(255, 0, 0, 1)",
-          borderWidth: 0,
-          order: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
+  createChart(timeLabels, nodeArr, moneyArr, "bar");
 
   console.log(moneyArr);
+
+  document.getElementById('buttons-extra').innerHTML = reinvestButton;
 };
 
 function main() {
@@ -360,7 +431,7 @@ function main() {
   let finalNodeCount = Number(initialNodeCount);
   let dailyUnitsUpdt = 0;
 
-  let chartButton = `<button type="submit" id="button-create" onclick="createChart()">Create Chart</button>`;
+  let chartButton = `<button type="submit" id="button-create" onclick="createSimpleChart()">Create Chart</button>`;
 
   if (nodeCap === -1 || nodeCap === "") {
     nodeCap = 10000000000000000000000000000000;

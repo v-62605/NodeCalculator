@@ -264,7 +264,7 @@ function reverse(
   }
 }
 
-let createChart = (labelsX, data1, data2, chartType) => {
+let createChart = (labelsX, data1, data2, chartType, width) => {
 
   boxClear();
   chartClear();
@@ -284,7 +284,7 @@ let createChart = (labelsX, data1, data2, chartType) => {
           data: data1,
           backgroundColor: "rgba(0, 255, 0, 1)",
           borderColor: "rgba(0, 255, 0, 1)",
-          borderWidth: 0,
+          borderWidth: width,
           order: 1,
           tension: 0.1,
         },
@@ -293,7 +293,7 @@ let createChart = (labelsX, data1, data2, chartType) => {
           data: data2,
           backgroundColor: "rgba(255, 0, 0, 1)",
           borderColor: "rgba(255, 0, 0, 1)",
-          borderWidth: 0,
+          borderWidth: width,
           order: 2,
         },
       ],
@@ -323,7 +323,7 @@ let reinvestFunc = (
   let nodeAmtList = [];
   let reinvestRatioList = [];
 
-  for (let i = 0; i < 1.0; i += 0.005) {
+  for (let i = 0; i < 1.0; i += 0.01) {
     reinvestRatioList.push(i.toFixed(2));
     let data = complex(
       dailyUnits,
@@ -363,7 +363,7 @@ let createReinvestChart = () => {
 
   let data = reinvestFunc(dailyUnits, nodePrice, timeCap, nodeCap, time, currentUnitSum, finalNodeCount);
 
-  createChart(data[0], data[1], data[2], "line");
+  createChart(data[0], data[1], data[2], "line", 1);
 
   console.log("Create Reinvest Chart");
 };
@@ -408,7 +408,7 @@ let createSimpleChart = () => {
   let nodeArr = data[1];
   let moneyArr = data[2];
 
-  createChart(timeLabels, nodeArr, moneyArr, "bar");
+  createChart(timeLabels, nodeArr, moneyArr, "bar", 0);
 
   console.log(moneyArr);
 

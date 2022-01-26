@@ -295,6 +295,7 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
           borderColor: "rgba(255, 0, 0, 1)",
           borderWidth: width,
           order: 2,
+          tension: 0.1,
         },
       ],
     },
@@ -310,8 +311,9 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
             display: true,
             text: "Count",
             font: {
-              size: 16,
-              weight: "bolder"
+              size: 18,
+              weight: "bolder",
+              family: 'Fira Code'
             }
           }
         },
@@ -324,8 +326,9 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
             display: true,
             text: titleX,
             font: {
-              size: 16,
-              weight: "bolder"
+              size: 18,
+              weight: "bolder",
+              family: 'Fira Code'
             }
           }
         }
@@ -335,8 +338,17 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
           display: true,
           text: chartTitle,
           font: {
-            size: 24,
-            weight: "bolder"
+            size: 30,
+            weight: "bolder",
+            family: 'Fira Code'
+          }
+        },
+        legend : {
+          labels:{
+            font: {
+              size: 14,
+              family: 'Fira Code'
+            }
           }
         }
       }

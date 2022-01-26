@@ -264,7 +264,7 @@ function reverse(
   }
 }
 
-let createChart = (labelsX, data1, data2, chartType, width, titleX='') => {
+let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitle='') => {
 
   boxClear();
   chartClear();
@@ -330,6 +330,16 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='') => {
           }
         }
       },
+      plugins: {
+        title: {
+          display: true,
+          text: chartTitle,
+          font: {
+            size: 24,
+            weight: "bolder"
+          }
+        }
+      }
     },
   });
 };
@@ -389,7 +399,9 @@ let createReinvestChart = () => {
 
   let data = reinvestFunc(dailyUnits, nodePrice, timeCap, nodeCap, time, currentUnitSum, finalNodeCount);
 
-  createChart(data[0], data[1], data[2], "line", 1, 'Reinvestment Ratio');
+  let title = `Node & Money Pool Count After ${timeCap} Days at Different Reinvestment Ratios`
+
+  createChart(data[0], data[1], data[2], "line", 1, 'Reinvestment Ratio', title);
 
   console.log("Create Reinvest Chart");
 };
@@ -434,7 +446,9 @@ let createSimpleChart = () => {
   let nodeArr = data[1];
   let moneyArr = data[2];
 
-  createChart(timeLabels, nodeArr, moneyArr, "bar", 0, 'Days');
+  let title = `Node & Money Pool Count After ${timeCap} Days`
+
+  createChart(timeLabels, nodeArr, moneyArr, "bar", 0, 'Days', title);
 
   console.log(moneyArr);
 

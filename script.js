@@ -264,7 +264,7 @@ function reverse(
   }
 }
 
-let createChart = (labelsX, data1, data2, chartType, width) => {
+let createChart = (labelsX, data1, data2, chartType, width, titleX='') => {
 
   boxClear();
   chartClear();
@@ -305,12 +305,28 @@ let createChart = (labelsX, data1, data2, chartType, width) => {
           grid : {
             color: "rgba(15, 15, 15, 0.4)",
             borderColor: "rgba(15, 15, 15, 0.4)"
+          },
+          title: {
+            display: true,
+            text: "Count",
+            font: {
+              size: 16,
+              weight: "bolder"
+            }
           }
         },
         x: {
           grid: {
             color: "rgba(15, 15, 15, 0.4)",
             borderColor: "rgba(15, 15, 15, 0.4)"
+          },
+          title: {
+            display: true,
+            text: titleX,
+            font: {
+              size: 16,
+              weight: "bolder"
+            }
           }
         }
       },
@@ -373,7 +389,7 @@ let createReinvestChart = () => {
 
   let data = reinvestFunc(dailyUnits, nodePrice, timeCap, nodeCap, time, currentUnitSum, finalNodeCount);
 
-  createChart(data[0], data[1], data[2], "line", 1);
+  createChart(data[0], data[1], data[2], "line", 1, 'Reinvestment Ratio');
 
   console.log("Create Reinvest Chart");
 };
@@ -418,7 +434,7 @@ let createSimpleChart = () => {
   let nodeArr = data[1];
   let moneyArr = data[2];
 
-  createChart(timeLabels, nodeArr, moneyArr, "bar", 0);
+  createChart(timeLabels, nodeArr, moneyArr, "bar", 0, 'Days');
 
   console.log(moneyArr);
 

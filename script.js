@@ -1,3 +1,10 @@
+let getpos = () => {
+  let boundObj = document.getElementById("button-submit").getBoundingClientRect();
+  return { y: boundObj.y };
+};
+
+let y = getpos();
+
 // Clear box and styling
 let boxClear = () => {
   document.getElementById("console-output").removeAttribute("style");
@@ -26,6 +33,14 @@ let chartBoxCreate = () => {
   document.getElementById("canvas").style.border = `1px solid rgb(0, 255, 0)`;
 };
 
+let scrollDown = (y) => {
+  scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+  console.log(y);
+};
+
 //Completely reset the calculator
 //To add ability to clear chart
 let clearCalc = () => {
@@ -44,8 +59,12 @@ let clearCalc = () => {
   document.getElementById("buttons-b").innerHTML = "";
   document.getElementById("buttons-extra").innerHTML = "";
 
-
   console.clear();
+
+  scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 };
 
 //Simple growth calulation
@@ -158,7 +177,7 @@ function complex(
   consoleOutput += ` Time: ${time - 1} days
 		 Final Unit Count: ${finalUnitSum.toFixed(2)}
 		 Final Node Count: ${finalNodeCount}
-		 Daily Units Final: ${(finalNodeCount*dailyUnits).toFixed(2)}
+		 Daily Units Final: ${(finalNodeCount * dailyUnits).toFixed(2)}
      Final Money Pool: ${moneyPool.toFixed(2)}\n`;
   consoleOutput += `\n \n DONE.`;
 
@@ -264,8 +283,7 @@ function reverse(
   }
 }
 
-let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitle='') => {
-
+let createChart = (labelsX, data1, data2, chartType, width, titleX = "", chartTitle = "") => {
   boxClear();
   chartClear();
   chartUp();
@@ -303,9 +321,9 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
       scales: {
         y: {
           beginAtZero: true,
-          grid : {
+          grid: {
             color: "rgba(15, 15, 15, 0.4)",
-            borderColor: "rgba(15, 15, 15, 0.4)"
+            borderColor: "rgba(15, 15, 15, 0.4)",
           },
           title: {
             display: true,
@@ -313,14 +331,14 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
             font: {
               size: 18,
               weight: "bolder",
-              family: 'Fira Code'
-            }
-          }
+              family: "Fira Code",
+            },
+          },
         },
         x: {
           grid: {
             color: "rgba(15, 15, 15, 0.4)",
-            borderColor: "rgba(15, 15, 15, 0.4)"
+            borderColor: "rgba(15, 15, 15, 0.4)",
           },
           title: {
             display: true,
@@ -328,10 +346,10 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
             font: {
               size: 18,
               weight: "bolder",
-              family: 'Fira Code'
-            }
-          }
-        }
+              family: "Fira Code",
+            },
+          },
+        },
       },
       plugins: {
         title: {
@@ -340,18 +358,18 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX='', chartTitl
           font: {
             size: 30,
             weight: "bolder",
-            family: 'Fira Code'
-          }
+            family: "Fira Code",
+          },
         },
-        legend : {
-          labels:{
+        legend: {
+          labels: {
             font: {
               size: 14,
-              family: 'Fira Code'
-            }
-          }
-        }
-      }
+              family: "Fira Code",
+            },
+          },
+        },
+      },
     },
   });
 };
@@ -411,9 +429,9 @@ let createReinvestChart = () => {
 
   let data = reinvestFunc(dailyUnits, nodePrice, timeCap, nodeCap, time, currentUnitSum, finalNodeCount);
 
-  let title = `Node & Money Pool Count After ${timeCap} Days at Different Reinvestment Ratios`
+  let title = `Node & Money Pool Count After ${timeCap} Days at Different Reinvestment Ratios`;
 
-  createChart(data[0], data[1], data[2], "line", 1, 'Reinvestment Ratio', title);
+  createChart(data[0], data[1], data[2], "line", 1, "Reinvestment Ratio", title);
 
   console.log("Create Reinvest Chart");
 };
@@ -433,7 +451,7 @@ let createSimpleChart = () => {
   let currentUnitSum = 0;
   let finalNodeCount = Number(initialNodeCount);
   let dailyUnitsUpdt = 0;
-  let reinvestButton = `<button type="submit" id="button-create" onclick="createReinvestChart()">Create Reinvestment Chart</button>`
+  let reinvestButton = `<button type="submit" id="button-create" onclick="createReinvestChart()">Create Reinvestment Chart</button>`;
 
   if (nodeCap === -1 || nodeCap === "") {
     nodeCap = 10000000000000000000000000000000;
@@ -458,13 +476,15 @@ let createSimpleChart = () => {
   let nodeArr = data[1];
   let moneyArr = data[2];
 
-  let title = `Node & Money Pool Count After ${timeCap} Days`
+  let title = `Node & Money Pool Count After ${timeCap} Days`;
 
-  createChart(timeLabels, nodeArr, moneyArr, "bar", 0, 'Days', title);
+  createChart(timeLabels, nodeArr, moneyArr, "bar", 0, "Days", title);
 
   console.log(moneyArr);
 
-  document.getElementById('buttons-extra').innerHTML = reinvestButton;
+  document.getElementById("buttons-extra").innerHTML = reinvestButton;
+
+  scrollDown(y["y"]);
 };
 
 function main() {
@@ -544,6 +564,7 @@ function main() {
 
   if (consoleOutput != undefined) {
     document.getElementById("console-output").innerText = consoleOutput;
+    scrollDown(y["y"]);
   }
   console.log("Click");
 }

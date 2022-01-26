@@ -302,7 +302,17 @@ let createChart = (labelsX, data1, data2, chartType, width) => {
       scales: {
         y: {
           beginAtZero: true,
+          grid : {
+            color: "rgba(15, 15, 15, 0.4)",
+            borderColor: "rgba(15, 15, 15, 0.4)"
+          }
         },
+        x: {
+          grid: {
+            color: "rgba(15, 15, 15, 0.4)",
+            borderColor: "rgba(15, 15, 15, 0.4)"
+          }
+        }
       },
     },
   });

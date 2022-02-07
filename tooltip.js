@@ -33,7 +33,7 @@ tippy('#NC', {
 })
 
 tippy('#DUF', {
-  content: `<span style="color: rgb(0, 255, 0)">Number of units required daily<span>`,
+  content: `<span style="color: rgb(0, 255, 0)">Number of units required daily after all compounding is done<span>`,
 })
 
 tippy('#RR', {

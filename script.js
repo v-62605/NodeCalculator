@@ -217,6 +217,7 @@ function reverse(
   let consoleOutput = "";
   let dailyUnitsUpdt;
   let moneyPool;
+  let initialNodeCount = 0;
 
   nodeCap = Math.ceil(dailyUnitsFinal / dailyUnits);
   let trueTime = 0;
@@ -268,6 +269,7 @@ function reverse(
     }
 
     if (finalNodeCount >= nodeCap) {
+      initialNodeCount = i;
       console.log(`\n`);
       console.log(` Initial Count: ${i}\t Initial Daily Units: ${dailyUnits * i}\n`);
       consoleOutput += `\n`;
@@ -284,6 +286,9 @@ function reverse(
     console.log(` Insufficient time to reach ${dailyUnitsFinal} units per day`);
     consoleOutput += ` Insufficient time to reach ${dailyUnitsFinal} units per day\n`;
   }
+
+  consoleOutput = `${dailyUnitsFinal} units/day can be reached with an initial node count of ${initialNodeCount} in ${timeCap} days \n \n` + consoleOutput
+
   consoleOutput += `\n \n DONE.`;
 
   if (outputData == true) {

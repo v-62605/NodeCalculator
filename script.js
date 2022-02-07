@@ -392,7 +392,7 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX = "", chartTi
             display: true,
             text: "Count",
             font: {
-              size: 18,
+              size: 12,
               weight: "bolder",
               family: "Fira Code",
             },
@@ -407,7 +407,7 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX = "", chartTi
             display: true,
             text: titleX,
             font: {
-              size: 18,
+              size: 12,
               weight: "bolder",
               family: "Fira Code",
             },
@@ -419,7 +419,7 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX = "", chartTi
           display: true,
           text: chartTitle,
           font: {
-            size: 30,
+            size: 18,
             weight: "bolder",
             family: "Fira Code",
           },
@@ -427,7 +427,7 @@ let createChart = (labelsX, data1, data2, chartType, width, titleX = "", chartTi
         legend: {
           labels: {
             font: {
-              size: 14,
+              size: 12,
               family: "Fira Code",
             },
           },

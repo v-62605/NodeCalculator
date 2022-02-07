@@ -12,6 +12,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="manifest" href="site.webmanifest" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRGX4B7XGC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-GRGX4B7XGC");
+    </script>
   </head>
   <body>
     <div id="nav">
@@ -34,7 +45,7 @@
           <input type="number" class="values-in" id="initial-node-count" min="-1" />
           <br />
         </div>
-        <div class="input-box" style = 'display:none'>
+        <div class="input-box" style="display: none">
           <label for="final-unit-sum" class="label-calc" id="FUS">Final Sum:</label><br />
           <input type="number" class="values-in" id="final-unit-sum" min="-1" />
           <br />
